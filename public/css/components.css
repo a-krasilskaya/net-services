@@ -1,0 +1,156 @@
+/* ===== Шапка сайта ===== */
+.site-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) 0;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.logo span {
+    color: var(--color-accent);
+}
+
+.nav {
+    display: none;
+    gap: var(--space-3);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+    .nav {
+        display: flex;
+    }
+}
+
+.nav a:hover {
+    color: var(--color-ink);
+}
+
+/* ===== Кнопки ===== */
+.btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 10px 20px;
+    border-radius: 999px;
+    transition: filter 0.2s;
+}
+
+.btn-primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+/* ===== Подвал сайта ===== */
+.site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--space-6);
+}
+
+.site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+    .site-footer__inner {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* ===== Hero-секция (главная страница) ===== */
+.hero {
+    padding: var(--space-6) 0;
+}
+
+.hero__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    max-width: 640px;
+    margin-bottom: var(--space-2);
+}
+
+.hero__text {
+    color: var(--color-muted);
+    font-size: 1.125rem;
+    max-width: 420px;
+    margin-bottom: var(--space-3);
+}
+
+/* ===== Заголовок обычной страницы (услуги/о нас/контакты) ===== */
+.page {
+    padding: var(--space-6) 0;
+}
+
+.page__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+}
+
+.page__text {
+    color: var(--color-muted);
+    line-height: 1.7;
+    max-width: 640px;
+}
+
+/* ===== Карточки услуг ===== */
+.services-grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.service-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: var(--space-3);
+}
+
+.service-card__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: var(--space-1);
+}
+
+.service-card__text {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
+
+/* ===== Контакты ===== */
+.contacts-info p {
+    color: var(--color-muted);
+    margin-bottom: var(--space-1);
+}
