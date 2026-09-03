@@ -13,13 +13,12 @@
         <div class="container hero-full__inner">
             <div class="hero-full__content">
                 <h1 class="hero-full__title">
-                    Проектируем и монтируем СКС, ВОЛС и видеонаблюдение с сервисом 24/7
+                    @typo($setting->hero_title)
                 </h1>
                 <p class="hero-full__text">
-                    Меняем хаос проводов на сеть, которая просто работает
+                    @typo($setting->hero_subtitle)
                 </p>
                 <a href="{{ route('contacts') }}" class="btn btn-primary">Оставить заявку</a>
-
                 <div class="hero-full__status">
                     <span><span class="dot"></span>ONLINE 24/7</span>
                     <span>99.98% UPTIME</span>

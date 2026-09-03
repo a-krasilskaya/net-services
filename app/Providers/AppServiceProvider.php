@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \Blade::directive('typo', function ($expression) {
+            return "<?php echo \App\Helpers\Typography::fixOrphans($expression); ?>";
+        });
     }
 }

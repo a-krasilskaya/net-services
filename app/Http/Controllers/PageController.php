@@ -6,7 +6,9 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('pages.home');
+        $setting = \App\Models\Setting::first();
+
+        return view('pages.home', compact('setting'));
     }
 
     public function about()
