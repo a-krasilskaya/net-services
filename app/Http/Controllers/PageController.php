@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
+use App\Models\Setting;
+
 class PageController extends Controller
 {
     public function home()
     {
-        $setting = \App\Models\Setting::first();
+        $setting = Setting::first();
 
         return view('pages.home', compact('setting'));
     }
@@ -18,22 +21,17 @@ class PageController extends Controller
 
     public function services()
     {
-        $services = [
-            [
-                'title' => 'Разработка сайтов',
-                'text' => 'Корпоративные сайты, интернет-магазины и веб-приложения под ключ.',
-            ],
-            [
-                'title' => 'Telegram-боты',
-                'text' => 'Боты для продаж, поддержки клиентов и автоматизации процессов.',
-            ],
-            [
-                'title' => 'Интеграции и API',
-                'text' => 'Подключение платёжных систем, CRM и внешних сервисов.',
-            ],
-        ];
+        $setting = Setting::first();
+        $services = Service::orderBy('order')->get();
 
-        return view('pages.services', compact('services'));
+        return view('pages.services', compact('services', 'setting'));
+    }
+
+    public function showService(Service $service)
+    {
+        $setting = Setting::first();
+
+        return view('pages.service-single', compact('service', 'setting'));
     }
 
     public function contacts()

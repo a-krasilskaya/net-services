@@ -6,6 +6,8 @@ use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+
 
 class ServiceForm
 {
@@ -36,6 +38,13 @@ class ServiceForm
                 ->label('Порядок сортировки')
                 ->numeric()
                 ->default(0),
+            TextInput::make('meta_title')
+                ->label('Meta Title (для SEO)')
+                ->maxLength(255)
+                ->helperText('Если оставить пустым — будет использовано название услуги'),
+            Textarea::make('meta_description')
+                ->label('Meta Description (для SEO)')
+                ->maxLength(500),
         ]);
     }
 }
