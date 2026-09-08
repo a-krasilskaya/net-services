@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
     @stack('styles')
+    @stack('meta')
 </head>
 <body>
 
