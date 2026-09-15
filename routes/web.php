@@ -11,3 +11,4 @@ Route::get('/services/{service:slug}', [PageController::class, 'showService'])->
 Route::get('/contacts', [PageController::class, 'contacts'])->name('contacts');
 Route::post('/calculator/estimate', [CalculatorController::class, 'estimate'])->name('calculator.estimate');
 Route::post('/calculator/submit', [CalculatorController::class, 'submit'])->name('calculator.submit');
+Route::get('/calculator/widget/{type}', [CalculatorController::class, 'widget'])->name('calculator.widget');

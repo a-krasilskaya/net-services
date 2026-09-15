@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class CalculatorController extends Controller
 {
+    public function widget(string $type)
+    {
+        if (! in_array($type, ['sks', 'vols'])) {
+            abort(404);
+        }
+
+        return view('partials.calculator-' . $type);
+    }
+    
     public function estimate(Request $request)
     {
         $price = $this->calculatePrice($request->input('calculator'), $request->all());

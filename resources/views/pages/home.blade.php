@@ -29,7 +29,10 @@
     </section>
 
     <div class="container">
-        @include('partials.calculator-sks')
+        <button type="button" class="btn btn-primary calculator-loader" data-calculator-type="sks" data-target="calculator-container">
+            Рассчитать стоимость СКС
+        </button>
+        <div id="calculator-container"></div>
     </div>
 @endsection
 
