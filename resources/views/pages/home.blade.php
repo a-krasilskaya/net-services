@@ -27,8 +27,13 @@
             </div>
         </div>
     </section>
+
+    <div class="container">
+        @include('partials.calculator-sks')
+    </div>
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('js/calculator.js') }}"></script>
     <script src="{{ asset('js/pages/home.js') }}"></script>
 @endpush
