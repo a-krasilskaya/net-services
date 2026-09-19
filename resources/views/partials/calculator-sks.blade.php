@@ -1,4 +1,6 @@
 <div class="calculator" data-calculator="sks">
+    <h3 class="calculator__title">Калькулятор СКС</h3>
+
     <div class="calculator__fields-grid">
         <div class="calculator__field">
             <label>Количество рабочих мест</label>
@@ -68,8 +70,19 @@
     <div class="calculator__contacts" style="display: none;">
         <input type="text" name="name" placeholder="Ваше имя" class="calculator__input">
         <input type="tel" name="phone" placeholder="Телефон" class="calculator__input">
+
+        <label class="calculator__consent">
+            <input type="checkbox" name="consent" class="calculator__consent-checkbox" required>
+            Отправляя данные, вы соглашаетесь с <a href="{{ route('privacy-policy') }}" target="_blank">политикой обработки персональных данных</a>
+        </label>
+
         <button type="button" class="btn btn-primary calculator__submit">Отправить заявку</button>
+        <p class="calculator__error" style="display: none;">Пожалуйста, согласитесь с политикой обработки данных</p>
     </div>
+
+    <p class="calculator__note">
+        Оставьте заявку — при большом объёме работ рассчитаем индивидуальные условия.
+    </p>
 
     <div class="calculator__actions">
         <button type="button" class="btn btn-primary calculator__show-contacts">Оставить заявку</button>

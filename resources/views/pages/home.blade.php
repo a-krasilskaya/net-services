@@ -33,7 +33,16 @@
             Рассчитать стоимость СКС
         </button>
 
+        <button type="button" class="btn btn-primary calculator-loader" data-calculator-type="vols" data-target="calculator-dialog-vols">
+            Рассчитать стоимость ВОЛС
+        </button>
+
         <dialog id="calculator-dialog-sks" class="calculator-dialog">
+            <button type="button" class="calculator-dialog__close">&times;</button>
+            <div class="calculator-dialog__content"></div>
+        </dialog>
+
+        <dialog id="calculator-dialog-vols" class="calculator-dialog">
             <button type="button" class="calculator-dialog__close">&times;</button>
             <div class="calculator-dialog__content"></div>
         </dialog>

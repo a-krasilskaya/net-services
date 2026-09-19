@@ -27,6 +27,11 @@ class PageController extends Controller
         return view('pages.services', compact('services', 'setting'));
     }
 
+    public function privacyPolicy()
+    {
+        return view('pages.privacy-policy');
+    }
+
     public function showService(Service $service)
     {
         $setting = Setting::first();

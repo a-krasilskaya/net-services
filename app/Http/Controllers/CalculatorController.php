@@ -22,6 +22,7 @@ class CalculatorController extends Controller
             'name' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:50',
             'email' => 'nullable|email|max:255',
+            'consent' => 'required|accepted',
         ]);
 
         $price = $this->calculatePrice($validated['calculator'], $request->all());
@@ -92,6 +93,29 @@ class CalculatorController extends Controller
             }
 
             $price = $cableCost + $powerCost + $areaCost + $roomCost + $rackCost + $conduitCost;
+
+            return round($price, 2);
+        }
+
+        if ($calculator === 'vols') {
+            $cableLength = (float) ($data['cable_length'] ?? 0);
+            $spliceCount = (int) ($data['splice_count'] ?? 0);
+            $fiberCount = $data['fiber_count'] ?? '4';
+            $fiberType = $data['fiber_type'] ?? 'singlemode';
+            $cableType = $data['cable_type'] ?? 'outdoor';
+
+            $perMeterKey = 'per_meter_' . $fiberCount;
+            $cableCost = $cableLength * ($rates[$perMeterKey] ?? 0);
+
+            $fiberTypePercentKey = 'fiber_type_' . $fiberType . '_percent';
+            $cableCost += $cableCost * (($rates[$fiberTypePercentKey] ?? 0) / 100);
+
+            $cableTypePercentKey = 'cable_type_' . $cableType . '_percent';
+            $cableCost += $cableCost * (($rates[$cableTypePercentKey] ?? 0) / 100);
+
+            $spliceCost = $spliceCount * $rates['per_splice'];
+
+            $price = $cableCost + $spliceCost;
 
             return round($price, 2);
         }

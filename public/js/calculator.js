@@ -64,9 +64,20 @@ function initCalculator(calc) {
     });
 
     submitBtn.addEventListener('click', function () {
+        const consentCheckbox = calc.querySelector('.calculator__consent-checkbox');
+        const errorEl = calc.querySelector('.calculator__error');
+
+        if (!consentCheckbox.checked) {
+            errorEl.style.display = 'block';
+            return;
+        }
+
+        errorEl.style.display = 'none';
+
         const data = collectData();
         data.name = calc.querySelector('input[name="name"]').value;
         data.phone = calc.querySelector('input[name="phone"]').value;
+        data.consent = consentCheckbox.checked;
 
         fetch('/calculator/submit', {
             method: 'POST',
