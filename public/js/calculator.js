@@ -7,6 +7,7 @@ function initCalculator(calc) {
     const contactsBlock = calc.querySelector('.calculator__contacts');
     const submitBtn = calc.querySelector('.calculator__submit');
     const successBlock = calc.querySelector('.calculator__success');
+    const resetBtn = calc.querySelector('.calculator__reset');
 
     let debounceTimer;
 
@@ -48,6 +49,20 @@ function initCalculator(calc) {
         showContactsBtn.style.display = 'none';
     });
 
+    resetBtn.addEventListener('click', function () {
+        inputs.forEach(function (input) {
+            if (input.tagName === 'SELECT') {
+                input.selectedIndex = 0;
+            } else {
+                input.value = input.defaultValue;
+            }
+        });
+        contactsBlock.style.display = 'none';
+        successBlock.style.display = 'none';
+        showContactsBtn.style.display = 'inline-block';
+        estimate();
+    });
+
     submitBtn.addEventListener('click', function () {
         const data = collectData();
         data.name = calc.querySelector('input[name="name"]').value;
@@ -73,25 +88,29 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.calculator').forEach(initCalculator);
 
     document.querySelectorAll('.calculator-loader').forEach(function (loaderBtn) {
-    const originalText = loaderBtn.textContent;
+        loaderBtn.addEventListener('click', function () {
+            const type = loaderBtn.dataset.calculatorType;
+            const dialog = document.getElementById(loaderBtn.dataset.target);
+            const content = dialog.querySelector('.calculator-dialog__content');
 
-    loaderBtn.addEventListener('click', function () {
-        const type = loaderBtn.dataset.calculatorType;
-        const container = document.getElementById(loaderBtn.dataset.target);
+            if (content.innerHTML.trim() !== '') {
+                dialog.showModal();
+                return;
+            }
 
-        if (container.innerHTML.trim() !== '') {
-            container.innerHTML = '';
-            loaderBtn.textContent = originalText;
-            return;
-        }
+            fetch('/calculator/widget/' + type)
+                .then(function (response) { return response.text(); })
+                .then(function (html) {
+                    content.innerHTML = html;
+                    initCalculator(content.querySelector('.calculator'));
+                    dialog.showModal();
+                });
+        });
+    });
 
-        fetch('/calculator/widget/' + type)
-            .then(function (response) { return response.text(); })
-            .then(function (html) {
-                container.innerHTML = html;
-                loaderBtn.textContent = 'Скрыть калькулятор';
-                initCalculator(container.querySelector('.calculator'));
-            });
+    document.querySelectorAll('.calculator-dialog__close').forEach(function (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            closeBtn.closest('.calculator-dialog').close();
         });
     });
 });

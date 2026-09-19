@@ -29,10 +29,14 @@
     </section>
 
     <div class="container">
-        <button type="button" class="btn btn-primary calculator-loader" data-calculator-type="sks" data-target="calculator-container">
+        <button type="button" class="btn btn-primary calculator-loader" data-calculator-type="sks" data-target="calculator-dialog-sks">
             Рассчитать стоимость СКС
         </button>
-        <div id="calculator-container"></div>
+
+        <dialog id="calculator-dialog-sks" class="calculator-dialog">
+            <button type="button" class="calculator-dialog__close">&times;</button>
+            <div class="calculator-dialog__content"></div>
+        </dialog>
     </div>
 @endsection
 
