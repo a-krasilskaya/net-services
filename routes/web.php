@@ -13,3 +13,5 @@ Route::post('/calculator/estimate', [CalculatorController::class, 'estimate'])->
 Route::post('/calculator/submit', [CalculatorController::class, 'submit'])->name('calculator.submit');
 Route::get('/calculator/widget/{type}', [CalculatorController::class, 'widget'])->name('calculator.widget');
 Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/calculator/sks', [PageController::class, 'calculatorSks'])->name('calculator.sks');
+Route::get('/calculator/vols', [PageController::class, 'calculatorVols'])->name('calculator.vols');

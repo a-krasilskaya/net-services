@@ -341,3 +341,56 @@
     margin: 0;
     max-width: none;
 }
+
+/* ===== Подсказки в калькуляторе (details) ===== */
+.calculator__hint {
+    display: none;
+}
+
+.calculator__hint summary {
+    font-size: 0.8125rem;
+    color: var(--color-signal);
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.calculator__hint p {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    margin-top: var(--space-1);
+}
+
+/* ===== Калькулятор на отдельной странице — 3 колонки, полная ширина ===== */
+.page .calculator {
+    max-width: none;
+}
+
+.page .calculator__fields-grid {
+    display: block;
+    margin-bottom: var(--space-4);
+}
+
+.page .calculator__field {
+    display: grid;
+    grid-template-columns: 240px 1fr 320px;
+    gap: var(--space-3);
+    align-items: start;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.page .calculator__field label {
+    margin-bottom: 0;
+    padding-top: 10px;
+    color: var(--color-ink);
+}
+
+.page .calculator__hint {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .page .calculator__field {
+        grid-template-columns: 1fr;
+    }
+}

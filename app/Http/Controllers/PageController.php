@@ -43,4 +43,14 @@ class PageController extends Controller
     {
         return view('pages.contacts');
     }
+
+    public function calculatorSks()
+    {
+        return view('pages.calculator-sks');
+    }
+
+    public function calculatorVols()
+    {
+        return view('pages.calculator-vols');
+    }
 }

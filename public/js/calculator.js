@@ -125,3 +125,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.innerWidth > 900) {
+        document.querySelectorAll('.page .calculator__hint').forEach(function (details) {
+            details.open = true;
+        });
+    }
+});
